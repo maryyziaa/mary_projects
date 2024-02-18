@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Upload</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css2/uploadstyle.css">
+</head>
+
+<body>
+    <div class="container">
+        <form action="upload.php" method="POST" enctype="multipart/form-data">
+            <h1>Upload your study content</h1>
+
+            <h3>
+                Share your one or more files just in one click
+            </h3>
+
+            <label for="myfile">Select a file:</label>
+
+            <input type="file" id="myfile" name="myfile" multiple="multiple" />
+
+            <br /><br />
+
+            <input type="submit" />
+            <!-- Display a message div -->
+            <div id="message" style="display:none;"></div>
+        </form>
+    </div>
+
+    <script>
+        document.querySelector('form').addEventListener('submit', function (event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+   
+            let uploadSuccess = true;
+
+            // Get the message div
+            let messageDiv = document.getElementById('message');
+
+            if (uploadSuccess) {
+                // Display success message
+                messageDiv.innerHTML = 'File uploaded successfully!';
+                messageDiv.style.color = 'green';
+                messageDiv.style.display = 'block';
+
+                // Redirect to index2.html after a delay
+                setTimeout(function () {
+                    window.location.href = 'index2.html';
+                }, 2000); // 2000 milliseconds (2 seconds) delay
+            } else {
+                // Display error message
+                messageDiv.innerHTML = 'Error uploading file.';
+                messageDiv.style.color = 'red';
+                messageDiv.style.display = 'block';
+            }
+        });
+    </script>
+</body>
+
+</html>
